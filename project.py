@@ -93,7 +93,7 @@ def InsertionSort(randomList):
     if s=='0':
         return randomList
     print("\n")
-    newList=randomList
+    newList=randomList.copy()
     count=0
     n=len(randomList)
     for i in range(1,n):   
@@ -101,16 +101,18 @@ def InsertionSort(randomList):
         print(f"{count}".center(50))
         print("\n")
         print(f"Let our element-{i+1}: {randomList[i]}, be our key.")
+        print("              ",end="")
         for k in range(n):
             if k==(i):
                 print(f"({randomList[k]})",end=" ")
             else:
                 print(f"{randomList[k]}",end=" ")
-
+        print("\n")
         print(f"\nWe traverse the list from its left until we find the element less than our key\n")
         key=randomList[i]
         j=i-1
         while j>=0 and key<newList[j]: 
+            print("              ",end="")
             for k in range(n):
                 if k==j or k==(i):
                     print(f"({randomList[k]})",end=" ")
@@ -121,8 +123,9 @@ def InsertionSort(randomList):
             j-=1
         
         newList[j+1]=key
-        randomList=newList
+        randomList=newList.copy()
         print("We have found the right spot for our key. The current list is:\n")
+        print("              ",end="")
         for k in range(n):
             if k==j+1:
                 print(f"({randomList[k]})",end=" ")
@@ -155,12 +158,14 @@ def SelectionSort(randomList):
         print(f"{count}".center(50))
         print("\n")
         print(f"Let our element-{i+1}: {randomList[i]}, be our key.")
+        print("              ",end="")
         for k in range(n):
             if k==(i):
                 print(f"({randomList[k]})",end=" ")
             else:
                 print(f"{randomList[k]}",end=" ")
 
+        print("\n")
         print(f"\nWe traverse the list from its right until we find the smallest element\n")
         key=randomList[i]
         idx=i
@@ -198,12 +203,15 @@ def LinearSearch(randomList,key):
     print("We go through the list from start to finish to find our key\n")
     n=len(randomList)
     for i in range(n):
+        print("              ",end="")
         for k in range(n):
             if k==i:
                 print(f"({randomList[i]})",end=" ")
             else:
                 print(randomList[k],end=" ")
         print("\n")
+
+        print("              ",end="")
         if randomList[i]==key:
             print(f"We have found our key on the index-{i+1}")
             print("\n\n")
@@ -232,11 +240,11 @@ def BinarySearch(randomList,key):
     count=0
     while start<=end:
         count+=1
-        print(f"{count}".center(50))
+        print(f"{count}\n".center(50))
         randomList=randomList[start:end+1]
         start=0
         end=len(randomList)-1
-        print(f"Our current list is :{randomList}\n")
+        print(f"Our current list is : {randomList}\n")
         mid=int((start+end)/2)
         print(f"Our middle value is {randomList[mid]}")
         for k in range(start,end+1):
